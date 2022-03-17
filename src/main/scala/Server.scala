@@ -1,12 +1,9 @@
-import cats.Parallel
 import cats.effect._
 import cats.implicits._
 import fs2.Stream
 import io.circe.Json
 import io.circe.syntax.KeyOps
-import org.http4s._
 import org.http4s.blaze.server.BlazeServerBuilder
-import org.http4s.server.middleware.{Logger => ServerLogMiddleware, _}
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import sttp.model.StatusCode.InternalServerError
 import sttp.monad.MonadError
@@ -18,11 +15,9 @@ import sttp.tapir.server.interceptor.exception.{ExceptionContext, ExceptionHandl
 import sttp.tapir.server.interceptor.log.DefaultServerLog
 import sttp.tapir.statusCode
 
-import scala.concurrent.duration._
-
 object Server {
 
-  def serve[F[_]](implicit F: Async[F], P: Parallel[F]): Stream[F, ExitCode] = {
+  def serve[F[_]: Async]: Stream[F, ExitCode] = {
     implicit val monadError: MonadError[F] = new CatsMonadError[F]
 
     Stream.eval(Slf4jLogger.create[F]).flatMap { logger =>
