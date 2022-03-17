@@ -5,6 +5,7 @@ ThisBuild / scalaVersion := "2.13.8"
 val http4sV = "0.23.10"
 val circeV = "0.14.1"
 val tapirV = "0.19.4"
+val log4catsV = "2.2.0"
 val tapirGoldenTestV = "0.1.0"
 val munitV = "0.7.29"
 val munitCEV = "1.0.7"
@@ -19,6 +20,7 @@ lazy val root = (project in file("."))
     addCompilerPlugin("org.typelevel" % "kind-projector"     % kindProjectorV cross CrossVersion.full),
     addCompilerPlugin("com.olegpy"   %% "better-monadic-for" % betterMonadicForV),
     libraryDependencies ++= Seq(
+      "org.typelevel"               %% "log4cats-slf4j"                       % log4catsV,
       "com.softwaremill.sttp.tapir" %% "tapir-json-circe"                     % tapirV,
       "com.softwaremill.sttp.tapir" %% "tapir-http4s-server"                  % tapirV,
       "com.softwaremill.sttp.tapir" %% "tapir-enumeratum"                     % tapirV,
