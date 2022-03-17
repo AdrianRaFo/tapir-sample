@@ -28,6 +28,7 @@ lazy val root = (project in file("."))
       "com.softwaremill.sttp.tapir" %% "tapir-openapi-circe-yaml"             % tapirV,
       "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-bundle"              % tapirV,
       "io.circe"                    %% "circe-generic"                        % circeV,
+      "io.circe"                    %% "circe-generic-extras"                 % circeV,
       "io.circe"                    %% "circe-parser"                         % circeV,
       "org.typelevel"               %% "munit-cats-effect-3"                  % munitCEV         % Test,
       "org.scalameta"               %% "munit-scalacheck"                     % munitV           % Test,

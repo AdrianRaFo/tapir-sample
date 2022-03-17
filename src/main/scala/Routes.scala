@@ -8,8 +8,9 @@ object Routes {
   def tapir[F[_]: Concurrent](implicit interpreter: Http4sServerInterpreter[F]): HttpRoutes[F] = {
     val helloRoute =
       Endpoints.helloEndpoint.serverLogicRecoverErrors {
-        case name if name.trim.nonEmpty => HelloResponse(s"Hello $name").pure[F]
-        case name => Concurrent[F].raiseError[HelloResponse](BadRequestResponse(name, "Received name was empty"))
+        case name if name.forall(_.isLetter) => HelloResponse(s"Hello $name").pure[F]
+        case name =>
+          Concurrent[F].raiseError[HelloResponse](BadRequestResponse(name, "Names can only contain letters"))
       }
 
     interpreter.toRoutes(List(helloRoute))

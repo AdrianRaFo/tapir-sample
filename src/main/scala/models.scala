@@ -1,17 +1,17 @@
 import io.circe.Codec
 import io.circe.generic.semiauto.deriveCodec
+import io.circe.generic.extras.semiauto.deriveUnwrappedCodec
 import sttp.tapir.EndpointIO.Example
 import sttp.tapir.Schema
 
 case class HelloResponse(helloMessage: String)
 
 object HelloResponse {
-  implicit val codec: Codec[HelloResponse] = deriveCodec
+  implicit val codec: Codec[HelloResponse] = deriveUnwrappedCodec
 
   implicit val schema: Schema[HelloResponse] = Schema
-    .derived[HelloResponse]
-    .description("Response with a successful hello message")
-    .modify(_.helloMessage)(_.description("The hello message"))
+    .string[HelloResponse]
+    .description("Successful hello message response")
 
   val example = Example.of(
     HelloResponse("Hello Foo")

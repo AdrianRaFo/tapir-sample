@@ -23,9 +23,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HelloResponse'
-              example:
-                helloMessage: Hello Foo
+                type: string
+                description: Successful hello message response
+              example: Hello Foo
         '400':
           description: Invalid received request
           content:
@@ -47,12 +47,3 @@ components:
           type: string
           description: The failure reason
       description: Bad request response for hello call
-    HelloResponse:
-      required:
-      - helloMessage
-      type: object
-      properties:
-        helloMessage:
-          type: string
-          description: The hello message
-      description: Response with a successful hello message
