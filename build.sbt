@@ -10,6 +10,8 @@ val tapirGoldenTestV  = "0.3.0"
 val munitV            = "0.7.29"
 val munitCEV          = "1.0.7"
 val http4sMunitV      = "0.9.3"
+// Java
+val logbackClassicV = "1.2.11"
 // Compiler plugins
 val kindProjectorV    = "0.13.2"
 val betterMonadicForV = "0.3.1"
@@ -20,6 +22,7 @@ lazy val root = (project in file("."))
     addCompilerPlugin("org.typelevel" % "kind-projector"     % kindProjectorV cross CrossVersion.full),
     addCompilerPlugin("com.olegpy"   %% "better-monadic-for" % betterMonadicForV),
     libraryDependencies ++= Seq(
+      "ch.qos.logback"              % "logback-classic"                       % logbackClassicV,
       "org.typelevel"               %% "log4cats-slf4j"                       % log4catsV,
       "org.http4s"                  %% "http4s-ember-server"                  % http4sV,
       "org.http4s"                  %% "http4s-circe"                         % http4sV,
