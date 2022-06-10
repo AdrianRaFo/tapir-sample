@@ -2,16 +2,16 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 
 ThisBuild / scalaVersion := "2.13.8"
 // Scala
-val http4sV = "0.23.10"
-val circeV = "0.14.1"
-val tapirV = "0.19.4"
-val log4catsV = "2.2.0"
-val tapirGoldenTestV = "0.1.0"
-val munitV = "0.7.29"
-val munitCEV = "1.0.7"
-val http4sMunitV = "0.9.3"
+val http4sV           = "0.23.11"
+val circeV            = "0.14.1"
+val tapirV            = "0.20.1"
+val log4catsV         = "2.3.0"
+val tapirGoldenTestV  = "0.3.0"
+val munitV            = "0.7.29"
+val munitCEV          = "1.0.7"
+val http4sMunitV      = "0.9.3"
 // Compiler plugins
-val kindProjectorV = "0.13.2"
+val kindProjectorV    = "0.13.2"
 val betterMonadicForV = "0.3.1"
 
 lazy val root = (project in file("."))
@@ -21,6 +21,8 @@ lazy val root = (project in file("."))
     addCompilerPlugin("com.olegpy"   %% "better-monadic-for" % betterMonadicForV),
     libraryDependencies ++= Seq(
       "org.typelevel"               %% "log4cats-slf4j"                       % log4catsV,
+      "org.http4s"                  %% "http4s-ember-server"                  % http4sV,
+      "org.http4s"                  %% "http4s-circe"                         % http4sV,
       "com.softwaremill.sttp.tapir" %% "tapir-json-circe"                     % tapirV,
       "com.softwaremill.sttp.tapir" %% "tapir-http4s-server"                  % tapirV,
       "com.softwaremill.sttp.tapir" %% "tapir-enumeratum"                     % tapirV,
@@ -31,7 +33,6 @@ lazy val root = (project in file("."))
       "io.circe"                    %% "circe-generic-extras"                 % circeV,
       "io.circe"                    %% "circe-parser"                         % circeV,
       "org.typelevel"               %% "munit-cats-effect-3"                  % munitCEV         % Test,
-      "org.scalameta"               %% "munit-scalacheck"                     % munitV           % Test,
       "com.alejandrohdezma"         %% "http4s-munit"                         % http4sMunitV     % Test,
       "com.alejandrohdezma"         %% "tapir-golden-openapi-munit"           % tapirGoldenTestV % Test,
       "com.alejandrohdezma"         %% "tapir-golden-openapi-munit-validator" % tapirGoldenTestV % Test

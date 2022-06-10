@@ -1,11 +1,12 @@
+package tapir.sample.api
+
 import io.circe.Codec
-import io.circe.generic.semiauto.deriveCodec
 import io.circe.generic.extras.semiauto.deriveUnwrappedCodec
+import io.circe.generic.semiauto.deriveCodec
 import sttp.tapir.EndpointIO.Example
 import sttp.tapir.Schema
 
 case class HelloResponse(helloMessage: String)
-
 object HelloResponse {
   implicit val codec: Codec[HelloResponse] = deriveUnwrappedCodec
 
@@ -19,7 +20,6 @@ object HelloResponse {
 }
 
 case class BadRequestResponse(name: String, error: String) extends Throwable
-
 object BadRequestResponse {
   implicit val codec: Codec[BadRequestResponse] = deriveCodec
 

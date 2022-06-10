@@ -1,5 +1,7 @@
+package tapir.sample.api
+
 import cats.effect.Concurrent
-import cats.implicits._
+import cats.syntax.all._
 import org.http4s.HttpRoutes
 import sttp.tapir.server.http4s.Http4sServerInterpreter
 
@@ -9,7 +11,7 @@ object Routes {
     val helloRoute =
       Endpoints.helloEndpoint.serverLogicRecoverErrors {
         case name if name.forall(_.isLetter) => HelloResponse(s"Hello $name").pure[F]
-        case name =>
+        case name                            =>
           Concurrent[F].raiseError[HelloResponse](BadRequestResponse(name, "Names can only contain letters"))
       }
 

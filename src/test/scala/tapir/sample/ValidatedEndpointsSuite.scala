@@ -1,7 +1,10 @@
+package tapir.sample
+
 import munit.{TapirGoldenOpenAPISuite, TapirGoldenOpenAPIValidatorSuite}
 import sttp.tapir._
 import sttp.tapir.docs.openapi.OpenAPIDocsOptions
 import sttp.tapir.openapi.Info
+import tapir.sample.api.Endpoints
 
 import java.nio.file.Path
 

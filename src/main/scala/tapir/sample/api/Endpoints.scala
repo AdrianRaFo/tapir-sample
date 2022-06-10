@@ -1,3 +1,5 @@
+package tapir.sample.api
+
 import sttp.model.StatusCode._
 import sttp.tapir._
 import sttp.tapir.json.circe.jsonBody
